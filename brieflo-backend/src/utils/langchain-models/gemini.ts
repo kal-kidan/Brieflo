@@ -29,13 +29,6 @@ export class PDFToScriptConverter {
       api_secret: process.env.CLOUDINARY_API_SECRET,
     });
     const url = cloudinary.url(this.pdfFilePath, { resource_type: 'raw' });
-    // const publicId = path.basename(this.pdfFilePath);
-    // console.log('publicId', publicId);
-    // const signedUrl = cloudinary.url(this.pdfFilePath, {
-    //   resource_type: 'raw',
-    //   secure: true,
-    //   sign_url: true,
-    // });
 
     const response = await fetch(url, {
       headers: {
@@ -89,10 +82,3 @@ export class PDFToScriptConverter {
     return result;
   }
 }
-
-// Usage example
-// (async () => {
-//   const converter = new PDFToScriptConverter('./js-notes.pdf');
-//   const script = await converter.convert();
-//   console.log(script);
-// })();
