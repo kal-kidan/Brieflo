@@ -7,12 +7,14 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: `.env`,
+      isGlobal: true,
+    }),
+    MongooseModule.forRoot(
+      process.env.MONGODB_URI || 'mongodb://localhost:27017/brieflo',
+    ),
     ScriptsModule,
-    // ConfigModule.forRoot({
-    //   envFilePath: `.env`,
-    //   isGlobal: true,
-    // }),
-    // MongooseModule.forRoot(process.env.MONGODB_URI),
   ],
   controllers: [AppController],
   providers: [AppService],

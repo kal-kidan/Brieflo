@@ -2,6 +2,9 @@ import {
   BadRequestException,
   Controller,
   Post,
+  Get,
+  Delete,
+  Param,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
@@ -19,6 +22,21 @@ export class ScriptsController {
     if (!pdfFile) {
       throw new BadRequestException('No file uploaded');
     }
-    return this.scriptsService.generateScriptFromPdf(pdfFile);
+    return await this.scriptsService.generateScriptFromPdf(pdfFile.path);
+  }
+
+  @Get()
+  async findAll() {
+    return await this.scriptsService.findAll();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return await this.scriptsService.findOne(id);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    return await this.scriptsService.delete(id);
   }
 }

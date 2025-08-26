@@ -14,6 +14,7 @@ import * as multer from 'multer';
 export class AllExceptionsFilter implements ExceptionFilter {
   constructor(private readonly logger: WinstonLoggerService) {}
   catch(exception: unknown, host: ArgumentsHost) {
+    console.log(exception);
     this.logger.error(exception as string);
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();

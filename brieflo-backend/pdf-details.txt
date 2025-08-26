@@ -1,0 +1,9 @@
+{
+  "fieldname": "pdfFile",
+  "originalname": "fw8ben.pdf",
+  "encoding": "7bit",
+  "mimetype": "application/pdf",
+  "path": "https://res.cloudinary.com/dldqp3hqm/image/upload/v1756211508/Brieflo/pdf-files/pdf-1756211506275-248287954.pdf",
+  "size": 113313,
+  "filename": "Brieflo/pdf-files/pdf-1756211506275-248287954"
+}
