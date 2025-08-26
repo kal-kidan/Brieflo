@@ -7,6 +7,7 @@ import {
   Param,
   UploadedFile,
   UseInterceptors,
+  Body,
 } from '@nestjs/common';
 import { ScriptsService } from './scripts.service';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -23,6 +24,14 @@ export class ScriptsController {
       throw new BadRequestException('No file uploaded');
     }
     return await this.scriptsService.generateScriptFromPdf(pdfFile.path);
+  }
+
+  @Post('generate-from-path')
+  async generateScript(@Body('pdfFilePath') pdfFilePath: string) {
+    if (!pdfFilePath || !pdfFilePath.trim()) {
+      throw new BadRequestException('No file path provided');
+    }
+    return await this.scriptsService.generateScriptFromPdf(pdfFilePath);
   }
 
   @Get()
