@@ -47,3 +47,4 @@ export class ScriptsService {
     return this.scriptModel.findByIdAndDelete(id).exec();
   }
 }
+
